@@ -39,6 +39,7 @@ raspberry-pi-lyric-synchronizer/
 │
 ├── main.py
 ├── song.lrc
+├── lcd.py
 ├── README.md
 ```
 
