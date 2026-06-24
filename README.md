@@ -7,6 +7,8 @@ This project uses a Raspberry Pi to display synchronized song lyrics in real tim
 
 As the song progresses, the system matches the current playback time with the corresponding lyric timestamps and updates the display automatically.
 
+This is a personal passion project that combines an interest in music with embedded systems and robotics-inspired hardware interaction.
+
 The project was developed to explore:
 - Raspberry Pi development
 - File handling and parsing
