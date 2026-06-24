@@ -3,7 +3,7 @@ from lcd import LCD
 
 lcd = LCD(2,0x27)
 time0 = time.time()
-f = open("babydaddy.lrc")
+f = open("song.lrc")
 ch = f.readlines()
 
 
