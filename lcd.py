@@ -56,6 +56,7 @@ class LCD:
         time.sleep(self.E_DELAY)
 
     def message(self, string, line = 1):
+        string = " " * ((16-len(string))//2) + string
         if line == 0:
             lcd_line = self.LCD_LINE_1
         elif line == 1:
@@ -67,32 +68,6 @@ class LCD:
 
         for i in range(self.LCD_WIDTH):
             self.lcd_byte(ord(string[i]), self.LCD_CHR)
-# 
-#     def message_align(self, string, time_ind, index = 1, itt= 1):
-#         nb = (len(string) // 16)+1
-#         if itt == 1:
-#             time_ind = time_ind / nb
-# 
-#         itt+=1   
-#         if  nb == 1:
-#             self.message(string,index%2)
-#             time.sleep(time_ind)
-# 
-#         else:
-#             string_copy = string
-#             pos = string_copy.find(" ")
-#             string_copy = string_copy[pos+1:]
-#             
-#             while (string_copy.find(" ") != -1 and string.find(" ") <= 15):
-#                 pos = pos + 1 + string_copy.find(" ")
-#                 string_copy = string_copy[string_copy.find(" ")+1:]
-#             
-#             str1 = string[:pos]
-#             self.message(str1, index%2)
-#             time.sleep(time_ind)
-#             str2 = string[pos+1:]
-#             self.message_align(str2,time_ind,index+1,itt)
-
 
 
     def clear(self):
@@ -101,7 +76,7 @@ class LCD:
     def message_align(self, string):
         words = string.split()
 
-        n_pages = max(1,(len(string) + 15) // 16)
+        n_pages = max(1,(len(string) + 15) // 16) #arrondi superieur
         target = len(string) / n_pages
 
         pages = []
@@ -141,10 +116,7 @@ class LCD:
 
                 if len(" ".join(a[:-1])) <= 16 and len(" ".join([moved] + b)) <= 16:
                     old_diff = abs(len(pages[i]) - len(pages[i + 1]))
-                    new_diff = abs(
-                        len(" ".join(a[:-1])) -
-                        len(" ".join([moved] + b))
-                    )
+                    new_diff = abs(len(" ".join(a[:-1])) - len(" ".join([moved] + b)))
 
                     if new_diff < old_diff:
                         pages[i] = " ".join(a[:-1])
