@@ -3,7 +3,9 @@ Raspberry Pi-powered display that shows synchronized song lyrics from LRC files 
 
 ## Overview
 
-This project uses a Raspberry Pi to display synchronized song lyrics in real time. Lyrics are loaded from LRC files, which contain timestamps associated with each lyric line.
+This project uses a Raspberry Pi to display synchronized song lyrics in real time. Lyrics can be loaded from LRC files, which contain timestamps associated with each lyric line. 
+
+Alternatively, lyrics can be automatically retrieved using the SyncedLyrics library, which searches multiple online lyric sources for synchronized lyrics. The retrieved lyrics are then parsed and displayed in real time on the Raspberry Pi display while taking into account the delay of fetching the lyrics online.
 
 As the song progresses, the system matches the current playback time with the corresponding lyric timestamps and updates the display automatically.
 
@@ -47,8 +49,8 @@ raspberry-pi-lyric-synchronizer/
 
 ## How It Works
 
-1. The user selects an LRC file.
-2. The program reads and parses the timestamps and lyric lines.
+1. The user selects an LRC file or writes the name of the song and artist.
+2. The program reads and parses the timestamps and lyric lines for existing lrc files or fetches the lyrics online.
 3. The current playback time is tracked.
 4. The program determines which lyric line corresponds to the current timestamp.
 5. The display is updated in real time.
@@ -88,6 +90,7 @@ https://github.com/user-attachments/assets/a49ab185-d59d-4075-93d6-a938d8b360f3
 - Parsing timestamps from LRC files
 - Maintaining accurate synchronization between playback time and lyrics
 - Designing a display layout that remains readable during updates
+- Finding a reliable way to consistently find the lyrics. The syncedlyrics library seems to be the optimal solution as parsing some websites seems very hard due to cloudfare security.
 
 ## Future Improvements
 
